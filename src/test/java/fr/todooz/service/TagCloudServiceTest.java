@@ -3,7 +3,6 @@ package fr.todooz.service;
 import java.util.Date;
 
 import javax.inject.Inject;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
