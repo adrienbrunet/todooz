@@ -2,39 +2,25 @@ package fr.todooz.service;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.joda.time.Interval;
 
 import fr.todooz.domain.Task;
 
-public class TaskService {
-	private SessionFactory sessionFactory;
+public interface TaskService {
 
-	public void save(Task task) {
-		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(task);
-	}
+	public void save(Task task);
 
-	public void delete(Long id) {
-		Session session = sessionFactory.getCurrentSession();
+	public void delete(Long id);
 
-		session.delete(session.get(Task.class, id));
-	}
+	public List<Task> findAll();
 
-	public List<Task> findAll() {
-		return criteria().list();
-	}
+	public List<Task> findByQuery(String query);
 
-	public List<Task> findByQuery(String query) {
-		return criteria().add(Restrictions.ilike("title", query, MatchMode.ANYWHERE)).list();
-	}
+	public List<Task> findByTag(String tag);
 
-	public int count() {
-		return 0;
-	}
+	public List<Task> findByInterval(Interval interval);
 
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		// TODO Auto-generated method stub
+	public int count();
 
-	}
+    public Task findById(Long id);
 }
