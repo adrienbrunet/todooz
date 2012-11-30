@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Fri Nov 30 09:16:45 CET 2012:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-013b-5063-a3e9-00000437f258 
-on database directory /Users/Lhorticulteur/Documents/workspace/todooz/target/testdb  with class loader sun.misc.Launcher$AppClassLoader@7a9664a1 
+Fri Nov 30 09:27:46 CET 2012:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-013b-506d-b98c-0000042cda08 
+on database directory /Users/Lhorticulteur/Documents/workspace/todooz/target/testdb  with class loader sun.misc.Launcher$AppClassLoader@27a8c4e7 
 Loaded from file:/Users/Lhorticulteur/.m2/repository/org/apache/derby/derby/10.8.1.2/derby-10.8.1.2.jar
 java.vendor=Apple Inc.
 java.runtime.version=1.6.0_37-b06-434-11M3909

@@ -2,28 +2,39 @@ package fr.todooz.service;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import fr.todooz.domain.Task;
 
+public class TaskService {
+	private SessionFactory sessionFactory;
 
-	public class TaskService {
-		   public void save(Task task) {
-		      // TODO
-		   }
+	public void save(Task task) {
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(task);
+	}
 
-		   public void delete(Long id) {
-		      // TODO
-		   }
+	public void delete(Long id) {
+		Session session = sessionFactory.getCurrentSession();
 
-		   public List<Task> findAll() {
-		      // TODO
-		   }
+		session.delete(session.get(Task.class, id));
+	}
 
-		   public List<Task> findByQuery(String query) {
-		      // TODO
-		   }
+	public List<Task> findAll() {
+		return criteria().list();
+	}
 
-		   public int count() {
-		      // TODO
-		   }
-		}
+	public List<Task> findByQuery(String query) {
+		return criteria().add(Restrictions.ilike("title", query, MatchMode.ANYWHERE)).list();
+	}
 
+	public int count() {
+		return 0;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		// TODO Auto-generated method stub
+
+	}
+}
