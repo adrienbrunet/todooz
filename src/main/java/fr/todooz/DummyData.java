@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import fr.todooz.domain.Task;
+
 public class DummyData {
 	private static final int TASK_COUNT = 10;
 	

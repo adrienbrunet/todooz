@@ -34,10 +34,18 @@ public class TagCloud extends HttpClientTest {
 			return tags.contains(string);
 		}
 
-		public void top(int i) {
-			
-			
-		}
+
+		public void top(int limite) {
+			if(limite>=0){
+				if(tags.size()>limite){
+					tags = tags.subList(0, limite);
+				}
+			}
+				else{
+					tags.clear();
+				}
+			}
+
 
 		public void shuffle() {
 			Collections.shuffle(tags);
