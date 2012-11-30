@@ -34,67 +34,67 @@ public class HibernateTest {
 
 		sessionFactory = configuration.buildSessionFactory();
 	}
-	
+
 	@Test
 	public void saveTask() {
-	    Task task = new Task();
+		Task task = new Task();
 
-	    task.setDate(new Date());
-	    task.setTitle("Read Effective Java");
-	    task.setText("Read Effective Java before it's too late");
-	    task.setTags("java,java");
+		task.setDate(new Date());
+		task.setTitle("Read Effective Java");
+		task.setText("Read Effective Java before it's too late");
+		task.setTags("java,java");
 
-	    Session session = sessionFactory.openSession();
+		Session session = sessionFactory.openSession();
 
-	    session.save(task);
+		session.save(task);
 
-	    session.close();
+		session.close();
 	}
-	
+
 	@Test
 	public void findTask() {
-	    saveTask();
+		saveTask();
 
-	    Session session = sessionFactory.openSession();
+		Session session = sessionFactory.openSession();
 
-	    Query query = session.createQuery("from Task where title = :title");
+		Query query = session.createQuery("from Task where title = :title");
 
-	    query.setString("title", "Read Effective Java");
+		query.setString("title", "Read Effective Java");
 
-	    List<Task> tasks = query.list();
+		List<Task> tasks = query.list();
 
-	    session.close();
+		session.close();
 
-	    Assert.assertEquals(1, tasks.size());
-	    Assert.assertEquals("Read Effective Java", tasks.get(0).getTitle());
+		Assert.assertEquals(1, tasks.size());
+		Assert.assertEquals("Read Effective Java", tasks.get(0).getTitle());
 	}
-	
+
 	@Test
 	public void findTaskCriteria() {
-	    saveTask();
+		saveTask();
 
-	    Session session = sessionFactory.openSession();
+		Session session = sessionFactory.openSession();
 
-	    Criteria criteria = session.createCriteria(Task.class);
+		Criteria criteria = session.createCriteria(Task.class);
 
-	    criteria.add(Restrictions.eq("title", "Read Effective Java"));
+		criteria.add(Restrictions.eq("title", "Read Effective Java"));
 
-	    List<Task> tasks = criteria.list();
+		List<Task> tasks = criteria.list();
 
-	    session.close();
+		session.close();
 
-	    Assert.assertEquals(1, tasks.size());
-	    Assert.assertEquals("Read Effective Java", tasks.get(0).getTitle());
+		Assert.assertEquals(1, tasks.size());
+		Assert.assertEquals("Read Effective Java", tasks.get(0).getTitle());
 	}
-	
+
 	@After
 	public void cleanDb() {
-	    Session session = sessionFactory.openSession();
+		Session session = sessionFactory.openSession();
 
-	    session.createQuery("delete from Task").executeUpdate();
+		session.createQuery("delete from Task").executeUpdate();
 
-	    session.close();
+		session.close();
 
-	    sessionFactory.close();
+		sessionFactory.close();
 	}
 }
