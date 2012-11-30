@@ -29,11 +29,11 @@
                 <form:input id="title" path="title" class="span9" />
                 <label for="date">
                     Date
-                    <form:errors path="date"><span style="color:red">La date n'est pas correcte</span></form:errors>
+                    <form:errors path="date"><span style="color:red">La date n'est pas correcte, adrien concentre toi</span></form:errors>
                 </label>
                 <div class="input-append">
                     <form:input id="date" path="date" class="span3" />
-                    <span class="add-on">dd/MM/yyyy</span>
+                    <span class="add-on">dd/MM/yyyy sinon tu te retrouves au 1jan1970</span>
                 </div>
                 <label for="tags">Tags <form:errors path="tags" cssStyle="color: red" /></label>
                 <form:input id="tags" path="tags" class="span9" />
@@ -41,7 +41,7 @@
                 <form:textarea id="text" path="text" cols="60" rows="10" class="span9" />
                 <button type="submit" class="btn">${empty task.id ? 'Add' : 'Update'}</button>
                 <c:if test="${not empty task.id}">
-                    <a href="/edit/${task.id}/delete" class="btn btn-danger">Delete</a>
+                    <a href="/edit/${task.id}/delete" class="btn btn-danger">Supprimer</a>
                 </c:if>
             </form:form>
         </div>

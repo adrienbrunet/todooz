@@ -24,9 +24,9 @@ public class DummyData {
 	    Task task = new Task();
 
 	    task.setDate(new Date());
-	    task.setTitle("Read Effective Java");
-	    task.setText("Read Effective Java before it's too late");
-	    task.setTags("java,java");
+	    task.setTitle("Dummmmyyyyyy");
+	    task.setText("gn");
+	    task.setTags("pouet, pouet");
 
 	    return task;
 	  }
