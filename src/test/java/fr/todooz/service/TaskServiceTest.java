@@ -7,17 +7,15 @@ import javax.inject.Inject;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.todooz.domain.Task;
-import fr.todooz.service.ServiceTask;
+import fr.todooz.service.TaskService;
 import fr.todooz.service.TaskServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,7 +26,7 @@ public class TaskServiceTest {
 	private SessionFactory sessionFactory;
 	
 	@Inject
-	private ServiceTask taskService;
+	private TaskService taskService;
 
 	@After
 	public void cleanDb() {
@@ -41,8 +39,7 @@ public class TaskServiceTest {
 
 	@Test
 	public void save() {
-		ServiceTask taskService = new TaskServiceImpl();
-		taskService.setSessionFactory(sessionFactory);
+		TaskService taskService = new TaskServiceImpl();
 		taskService.save(task());
 	}
 
@@ -63,9 +60,7 @@ public class TaskServiceTest {
 
 	@Test
 	public void findAll() {
-		ServiceTask taskService = new TaskServiceImpl();
-		taskService.setSessionFactory(sessionFactory);
-
+		TaskService taskService = new TaskServiceImpl();
 		taskService.save(task());
 		taskService.save(task());
 
@@ -74,8 +69,7 @@ public class TaskServiceTest {
 
 	@Test
 	public void findByQuery() {
-		ServiceTask taskService = new TaskServiceImpl();
-		taskService.setSessionFactory(sessionFactory);
+		TaskService taskService = new TaskServiceImpl();
 
 		taskService.save(task());
 		taskService.save(task());
@@ -87,8 +81,7 @@ public class TaskServiceTest {
 
 	@Test
 	public void count() {
-		ServiceTask taskService = new TaskServiceImpl();
-		taskService.setSessionFactory(sessionFactory);
+		TaskService taskService = new TaskServiceImpl();
 
 		taskService.save(task());
 		taskService.save(task());

@@ -8,40 +8,50 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.apache.commons.lang.StringUtils;
-
+import org.hibernate.validator.constraints.NotBlank;
 
 
 @Entity
 @Table(name = "task")
 public class Task {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	public Long getId() {
-	  return id;
-	}
-
-	public void setId(Long id) {
-	  this.id = id;
-	}
 	@Column
 	private Date createdAt = new Date();
 
 	@Column
-	private String title;
+    @NotBlank
+    @Size(min = 1, max = 255)
+    private String title;
 
 	@Column(length = 4000, nullable = true)
+    @Size(max = 4000)
 	private String text;
 
 	@Column
-	private Date date;
+    @NotNull
+	private Date date = new Date();
 
 	@Column(nullable = true)
 	private String tags;
+
+	public String[] getTagArray() {
+		return StringUtils.split(tags, ",");
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Date getCreatedAt() {
 		return createdAt;
@@ -81,9 +91,5 @@ public class Task {
 
 	public void setText(String text) {
 		this.text = text;
-	}
-
-	public String[] getTagArray() {
-		return StringUtils.split(tags, ",");
 	}
 }

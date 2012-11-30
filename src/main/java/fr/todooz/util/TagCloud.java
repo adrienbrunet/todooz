@@ -4,51 +4,53 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import fr.todooz.http.HttpClientTest;
+public class TagCloud {
+	private List<String> tags = new ArrayList<String>();
 
-public class TagCloud extends HttpClientTest {
-	    private List<String> tags = new ArrayList<String>();
+	public List<String> getTags() {
+		return tags;
+	}
 
-	    private void add(String tag){
-	    	 if (tag=="" || tag==null ){
-	    		 return;
-	    	 }
-	    	 if (!tags.contains(tag))
-	    		  tags.add(tag);	  
-	    }
-	    
-	    public void add(String ... tags) {
-	      if (tags==null) {
-	    	  return;
-	      }
-	      for (String tag : tags){
-	    	add(tag);
-	      }
-	    }
-
-	    public int size() {
-	        return tags.size(); 
-	    }
-
-		public boolean contains(String string) {
-			return tags.contains(string);
+	public void add(String... tags) {
+		if (tags == null) {
+			return;
 		}
 
-
-		public void top(int limite) {
-			if(limite>=0){
-				if(tags.size()>limite){
-					tags = tags.subList(0, limite);
-				}
-			}
-				else{
-					tags.clear();
-				}
-			}
-
-
-		public void shuffle() {
-			Collections.shuffle(tags);
-			
+		for (String tag : tags) {
+			add(tag);
 		}
 	}
+
+	public void add(String tag) {
+		if (tag == null || tag.length() == 0) {
+			return;
+		}
+
+		if (!contains(tag)) {
+			tags.add(tag);
+		}
+	}
+
+	public int size() {
+		return tags.size();
+	}
+
+	public boolean contains(String tag) {
+		return tags.contains(tag);
+	}
+
+	public void top(int i) {
+		if (i < 0) {
+			i = 0;
+		}
+
+		int upperBound = Math.min(i, tags.size());
+
+		tags = tags.subList(0, upperBound);
+	}
+
+	public void shuffle() {
+		Collections.shuffle(tags);
+	}
+
+}
