@@ -45,7 +45,6 @@ public class TagCloud {
 		}
 
 		int upperBound = Math.min(i, tags.size());
-
 		tags = tags.subList(0, upperBound);
 	}
 

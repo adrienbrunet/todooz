@@ -3,64 +3,45 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
+<%@ taglib tagdir="/WEB-INF/tags/widget" prefix="widget" %>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Todooz</title>
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
-    <div class="navbar navbar-inverse">
-        <div class="navbar-inner">
-            <span class="brand">Todooz</span>
-            <form class="navbar-search pull-left">
-                <input type="text" class="search-query" placeholder="Search">
-            </form>
-            <a href="/add" class="btn btn-inverse pull-right"><i class="icon-plus icon-white"></i></a>
-        </div>
-    </div>
+    <widget:navbar />
+    
     <div class="row">
         <div class="span9">
+            <c:if test="${not empty flashMessage}">
+                <div class="alert">${flashMessage}</div>
+            </c:if>
+
             <legend>All tasks</legend>
 
 			<c:forEach var="task" items="${tasks}">
-			    <div>
-                    <p><fmt:formatDate value="${task.date}" pattern="dd MMM yyyy"/></p>
-                    <span class="lead">${task.title}</span>
-                    <c:forEach var="tag" items="${task.tags}">
-                        <span class="badge badge-info">${tag}</span>
-                    </c:forEach>
-                    <p>${task.text}</p>
-                </div>
+				<widget:task task="${task}" />
 			</c:forEach>
-
         </div>
         <div class="span3">
             <div>
                 <legend>Quick links</legend>
                 <ul>
-                    <li><a href="/today">Today's</a></li>
-                    <li><a href="/today">Tomorrow's</a></li>
+                    <li><a href="/today">C'esy aujourd'hui</a></li>
+                    <li><a href="/tomorrow">Demain</a></li>
                 </ul>
             </div>
 
             <div>
                 <legend>Tags</legend>
-                <a href="/tag/java" style="font-size:14px">java</a>
-                <a href="/tag/java" style="font-size:20px">java</a>
-                <a href="/tag/java" style="font-size:16px">java</a>
-                <a href="/tag/java" style="font-size:12px">java</a>
-                <a href="/tag/java" style="font-size:10px">java</a>
-                <a href="/tag/java" style="font-size:22px">java</a>
-                <a href="/tag/java" style="font-size:12px">java</a>
-                <a href="/tag/java" style="font-size:14px">java</a>
-                <a href="/tag/java" style="font-size:18px">java</a>
-                <a href="/tag/java" style="font-size:24px">java</a>
-                <a href="/tag/java" style="font-size:12px">java</a>
-                <a href="/tag/java" style="font-size:10px">java</a>
-                <a href="/tag/java" style="font-size:14px">java</a>
+                <c:forEach var="tag" items="${tagCloud.tags}">
+                	<a href="/tag/${tag}" style="font-size:14px">${tag}</a>
+                </c:forEach>
             </div>
         </div>
     </div>
@@ -68,4 +49,3 @@
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
-

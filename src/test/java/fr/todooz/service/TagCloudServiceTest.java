@@ -3,6 +3,7 @@ package fr.todooz.service;
 import java.util.Date;
 
 import javax.inject.Inject;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -14,7 +15,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.todooz.domain.Task;
-import fr.todooz.service.TagCloudService;
 import fr.todooz.util.TagCloud;
 
 @RunWith(SpringJUnit4ClassRunner.class)
