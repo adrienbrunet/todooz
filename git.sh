@@ -1,3 +1,3 @@
 git add *
-git commit -m "new commit du vendredi"
+git commit -m "dernier commit, test passant"
 git push

@@ -86,8 +86,8 @@ public class IndexController {
 
 			Task task3 = new Task();
 			task3.setDate(new Date("12/01/2012"));
-			task3.setTitle("troisieme");
-			task3.setTags("tag0");
+			task3.setTitle("troisieme test");
+			task3.setTags("tag0,truc");
 
 			taskService.save(task3);
 		}
