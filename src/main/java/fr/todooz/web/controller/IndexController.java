@@ -72,22 +72,22 @@ public class IndexController {
 		if (taskService.count() == 0) {
 			Task task1 = new Task();
 			task1.setDate(new Date());
-			task1.setTitle("Read Pro Git, premier test");
-			task1.setTags("scm,git");
+			task1.setTitle("premier test");
+			task1.setTags("tag0");
 
 			taskService.save(task1);
 
 			Task task2 = new Task();
 			task2.setDate(new Date());
-			task2.setTitle("Read Effective Java, deuxieme");
-			task2.setTags("java,test");
+			task2.setTitle("deuxieme test");
+			task2.setTags("tag1,tag2");
 
 			taskService.save(task2);
 
 			Task task3 = new Task();
 			task3.setDate(new Date("12/01/2012"));
-			task3.setTitle("Read Test Driven Development");
-			task3.setTags("java,test driven,junit");
+			task3.setTitle("troisieme");
+			task3.setTags("tag0");
 
 			taskService.save(task3);
 		}
