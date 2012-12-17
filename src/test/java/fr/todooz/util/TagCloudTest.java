@@ -56,7 +56,7 @@ public class TagCloudTest {
 	@Test
 	public void top() {
 	   TagCloud tagCloud = new TagCloud();
-	   tagCloud.add("java", "ruby", "python", "c#", "groovy");
+	   tagCloud.add("atchoum", "machin", "bidule", "truc", "test");
 	   tagCloud.top(3);
 	   Assert.assertEquals(3, tagCloud.size());
 	}
@@ -80,10 +80,10 @@ public class TagCloudTest {
 	@Test
 	public void shuffle() {
 	   TagCloud tagCloud = new TagCloud();
-	   tagCloud.add("java", "ruby", "python", "c#", "groovy");
+	   tagCloud.add("atchoum", "machin", "bidule", "truc", "test");
 	   tagCloud.shuffle();
 	   Assert.assertEquals(5, tagCloud.size());
-	   Assert.assertTrue(tagCloud.contains("java"));
+	   Assert.assertTrue(tagCloud.contains("bidule"));
 	}
 		
 	
